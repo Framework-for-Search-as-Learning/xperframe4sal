@@ -1,0 +1,75 @@
+services:
+
+  front:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    stdin_open: true
+    tty: true
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+    environment:
+      - REACT_APP_API_URL=http://localhost:3000/searching-as-learning
+      - WDS_SOCKET_PORT=3001
+    env_file:
+      - ./frontend/.env
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: nestjs-dev
+    restart: no
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - POSTGRES_HOST=postgres-api
+      - MONGO_URL=mongodb://mongo-api:27017
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - postgres-api
+      - mongo-api
+  postgres-api:
+    image: postgres:17-alpine
+    restart: no
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cbf
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: no
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '5050:80'
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres-api
+
+  mongo-api:
+    image: mongo
+    restart: no
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  postgres_data:
+  mongo_data:
+  pgadmin_data:
