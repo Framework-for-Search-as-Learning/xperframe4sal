@@ -62,4 +62,4 @@ git submodule update --init --recursive
 
 📄 License
 
-This project is licensed under the MIT License. See the <a src="./LICENSE">LICENSE</a> file for details.
+Released under the [MIT license](./LICENSE).
