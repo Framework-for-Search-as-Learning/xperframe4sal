@@ -2,7 +2,7 @@ YEAR := $(shell date +%Y)
 
 define COPYRIGHT
 /*
- * Copyright (c) $(YEAR), marcelomachado
+ * Copyright (c) $(YEAR), lapic-ufjf
  * Licensed under The MIT License [see LICENSE for details]
  */
 endef
