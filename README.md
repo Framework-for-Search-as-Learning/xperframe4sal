@@ -6,7 +6,7 @@ A standardized framework for capturing authentic human behavior in search and AI
 </p>
 <p align="center">
   <img src="https://img.shields.io/badge/version-1.0.0-004b8d" alt="Version">
-  <img src="https://img.shields.io/badge/license-MIT-2fb594" alt="License">
+  <a src="https://github.com/nestjs/nest/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-2fb594" alt="License"></a>
   <img src="https://img.shields.io/badge/Research-Tool-orange" alt="Tool">
 </p>
 
