@@ -51,18 +51,150 @@ The system supports two main user roles:
 
 ## 🛠️ Getting Started
 
-### Clone the Repository
+### 📋 Prerequisites
 
-This repository uses **Git submodules**. Make sure to clone it recursively:
+Before you begin, make sure you have the following tools installed on
+your machine:
 
-```bash
+-   **Git** -- to clone the repository and its submodules\
+-   **Docker** and **Docker Compose** -- to orchestrate the database,
+    backend API, and frontend
+
+------------------------------------------------------------------------
+
+## 1️⃣ Clone the Repository
+
+This repository uses **Git submodules**, so you must clone it
+recursively:
+
+``` bash
 git clone --recurse-submodules https://github.com/Framework-for-Search-as-Learning/xperframe4sal.git
+cd xperframe4sal
 ```
 
-If you already cloned the repository without submodules, initialize them with:
+If you already cloned the repository without submodules, initialize them
+with:
 
-```bash
+``` bash
 git submodule update --init --recursive
+```
+
+------------------------------------------------------------------------
+
+## 2️⃣ Configure Environment Variables (Optional)
+
+The docker-compose.yml file is pre-configured with default fallback values for a quick start. If you just want to run the project locally without custom credentials, you can skip this configuration and proceed directly to Step 3.
+
+The default values are:
+-   `DB_USER` -- PostgreSQL user (default: `postgres`)
+-   `DB_PASSWORD` -- PostgreSQL password (default: `postgres`)
+-   `DB_NAME` -- Database name (default: `sal`)
+-   `SECRET` -- Secret key used by the backend for JWT authentication (default: `pdjaspdipsjp`)
+
+If you want to override these default values (e.g., for production or a custom local setup), you have two alternatives:
+
+### ✅ Alternative A: Using a `.env` file (Recommended for custom setups)
+
+Copy the provided `.env.example` file and rename it to `.env`:
+
+**🐧 Linux / 🍏 macOS**
+
+``` bash
+cp .env.example .env
+```
+
+**🪟 Windows (CMD/PowerShell)**
+
+``` bash
+copy .env.example .env
+```
+
+Then open the `.env` file and edit it with your preferred values.
+
+### 💻 Alternative B: Using the Command Line (CLI)
+
+You can skip creating a `.env` file and pass the variables directly via
+CLI when starting the containers (shown below).
+
+------------------------------------------------------------------------
+
+## 3️⃣ Build and Run the Containers
+
+The system consists of three main services configured in Docker Compose:
+
+-   `postgres-api` -- Database\
+-   `api` -- Backend\
+-   `front` -- Frontend Web
+
+> ⚠️ The `--build` flag is only required on the first run or when there
+> are structural changes (such as installing new dependencies).
+
+### 🚀 First Run (or After Installing New Packages)
+
+**Using `.env` file (All OS):**
+
+``` bash
+docker compose up --build
+```
+
+**Via CLI (Linux/macOS):**
+
+``` bash
+DB_USER=postgres DB_PASSWORD=postgres DB_NAME=sal SECRET=your_jwt_secret docker compose up --build
+```
+
+**Via CLI (Windows PowerShell):**
+
+``` powershell
+$env:DB_USER="postgres";
+$env:DB_PASSWORD="postgres";
+$env:DB_NAME="sal";
+$env:SECRET="your_jwt_secret";
+docker compose up --build
+```
+
+### ⚡ Everyday Execution (Fast Start)
+
+``` bash
+docker compose up
+```
+
+To run in detached mode:
+
+``` bash
+docker compose up -d
+```
+
+------------------------------------------------------------------------
+
+## 4️⃣ Accessing the Application
+
+-   💻 **Frontend (UI):** http://localhost:3001\
+-   ⚙️ **Backend API:** http://localhost:3000\
+-   🗄️ **Database (PostgreSQL):** localhost:5432
+
+------------------------------------------------------------------------
+
+## 5️⃣ Stopping the Application
+
+If running attached to the terminal, press `CTRL + C`.
+
+If running in detached mode:
+
+``` bash
+docker compose down
+```
+
+------------------------------------------------------------------------
+
+## 🧠 Technical Notes
+
+### 💾 Data Persistence
+
+To completely wipe the database and start fresh:
+
+``` bash
+docker compose down -v
 ```
 
 
