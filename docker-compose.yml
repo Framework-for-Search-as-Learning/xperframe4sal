@@ -19,9 +19,10 @@ services:
       - "3000:3000"
     environment:
       DB_HOST: postgres-api
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      DB_NAME: ${DB_NAME:-sal}
+      SECRET: ${SECRET:-pdjaspdipsjp}
     volumes:
       - ./backend:/app
       - /app/node_modules
