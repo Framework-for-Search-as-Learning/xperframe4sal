@@ -37,13 +37,13 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - "3001:3000"
+      - "3001:3001"
     volumes:
       - ./frontend:/app
       - /app/node_modules
     environment:
       - HOST=0.0.0.0
-      - PORT=3000
+      - PORT=3001
       - WATCHPACK_POLLING=true
     depends_on:
       - api
