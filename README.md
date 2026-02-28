@@ -50,7 +50,7 @@ The system supports two main user roles:
 > **⚠️ Running Services Independently**
 > The instructions below in the **Getting Started** guide are for running the **entire stack together** using `Docker Compose`. If you wish to run the Frontend or Backend individually (e.g., for local development or native execution without Docker), please navigate to their respective submodule directories and follow the specific instructions in their individual `README.md` files:
 > - **Backend API:** `xperframe4sal-backend/README.md`
-> - **Frontend UI:** `xperframe4sal-frontend/README.md`
+> - **Frontend UI:** `xperframe4sal-front/README.md`
 ---
 
 ## 🛠️ Getting Started
