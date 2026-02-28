@@ -11,7 +11,7 @@ A standardized framework for capturing authentic human behavior in search and AI
 </p>
 
 ## Desciption
-Searchat Behavior is an end-to-end experimental framework for creating, managing, and running controlled experiments focused on user behavior during interactions with search engines and chat-based systems. The framework is designed to support empirical studies on how users search for information or  interact with conversational agents. It provides researchers with a complete toolchain to design experiments, deploy them as web-based studies, collect fine-grained interaction logs, and export standardized data for analysis and replication.
+Searchat Behavior is an end-to-end experimental framework for creating, managing, and running controlled experiments focused on user behavior during interactions with search engines and chat-based systems. The framework is designed to support empirical studies on how users search for information or  interact with conversational agents. It provides researchers with a complete toolchain to design experiments, deploy them as web-based studies, collect fine-grained interaction logs, visualize users data, and export standardized data for analysis and replication.
 
 Searchat Behavior is domain-agnostic and can be used in any context where understanding how users explore, search, or interact with conversational tools is essential.
 
@@ -34,8 +34,6 @@ Searchat Behavior can be used to support experiments such as:
 - Analyzing user interactions with chatbots or conversational agents
 - Comparing search-based and chat-based information access strategies
 - Investigating decision-making, engagement, and interaction patterns
-- Running controlled user studies on interactive information systems
-
 
 
 ## 🏗️ System Architecture (High-Level)
@@ -50,7 +48,7 @@ The system supports two main user roles:
 - Participants: take part in experiments by interacting with search engines or chat tools
 
 > **⚠️ Running Services Independently**
-> The instructions below in the **Getting Started** guide are for running the **entire stack together** using Docker Compose. If you wish to run the Frontend or Backend individually (e.g., for local development or native execution without Docker), please navigate to their respective submodule directories and follow the specific instructions in their individual `README.md` files:
+> The instructions below in the **Getting Started** guide are for running the **entire stack together** using `Docker Compose`. If you wish to run the Frontend or Backend individually (e.g., for local development or native execution without Docker), please navigate to their respective submodule directories and follow the specific instructions in their individual `README.md` files:
 > - **Backend API:** `xperframe4sal-backend/README.md`
 > - **Frontend UI:** `xperframe4sal-frontend/README.md`
 ---
@@ -87,17 +85,17 @@ git submodule update --init --recursive
 
 ------------------------------------------------------------------------
 
-## 2️⃣ Configure Environment Variables (Optional)
+## 2️⃣ Configure Environment Variables
 
-The docker-compose.yml file is pre-configured with default fallback values for a quick start. If you just want to run the project locally without custom credentials, you can skip this configuration and proceed directly to Step 3.
+The docker-compose.yml file is pre-configured with fallback values for a quick start. For deploying your instance of the system we highly recommend you to change those credentials.
 
-The default values are:
+The environment variables are:
 -   `DB_USER` -- PostgreSQL user (default: `postgres`)
 -   `DB_PASSWORD` -- PostgreSQL password (default: `postgres`)
 -   `DB_NAME` -- Database name (default: `sal`)
--   `SECRET` -- Secret key used by the backend for JWT authentication (default: `pdjaspdipsjp`)
+-   `SECRET` -- Secret key used by the backend for JWT authentication. (no default value, configure it yourself)
 
-If you want to override these default values (e.g., for production or a custom local setup), you have two alternatives:
+If you want to override default values (e.g., for production or a custom local setup), you need to export the new values for these variables. Two simple alternatives are:
 
 ### ✅ Alternative A: Using a `.env` file (Recommended for custom setups)
 
@@ -120,7 +118,23 @@ Then open the `.env` file and edit it with your preferred values.
 ### 💻 Alternative B: Using the Command Line (CLI)
 
 You can skip creating a `.env` file and pass the variables directly via
-CLI when starting the containers (shown below).
+CLI when starting the containers. For instance:
+
+#### Via CLI (Linux/macOS):
+
+``` bash
+DB_USER=postgres DB_PASSWORD=postgres DB_NAME=sal SECRET=your_jwt_secret docker compose up --build
+```
+
+#### Via CLI (Windows PowerShell):
+
+``` bash
+$env:DB_USER="postgres";
+$env:DB_PASSWORD="postgres";
+$env:DB_NAME="sal";
+$env:SECRET="your_jwt_secret";
+docker compose up --build
+```
 
 ------------------------------------------------------------------------
 
@@ -137,35 +151,18 @@ The system consists of three main services configured in Docker Compose:
 
 ### 🚀 First Run (or After Installing New Packages)
 
-**Using `.env` file (All OS):**
-
 ``` bash
 docker compose up --build
 ```
 
-**Via CLI (Linux/macOS):**
 
-``` bash
-DB_USER=postgres DB_PASSWORD=postgres DB_NAME=sal SECRET=your_jwt_secret docker compose up --build
-```
-
-**Via CLI (Windows PowerShell):**
-
-``` powershell
-$env:DB_USER="postgres";
-$env:DB_PASSWORD="postgres";
-$env:DB_NAME="sal";
-$env:SECRET="your_jwt_secret";
-docker compose up --build
-```
-
-### ⚡ Everyday Execution (Fast Start)
+### ⚡ Other Executions (Fast Start)
 
 ``` bash
 docker compose up
 ```
 
-To run in detached mode:
+To run in detached mode (free your terminal window):
 
 ``` bash
 docker compose up -d
@@ -176,22 +173,9 @@ docker compose up -d
 ## 4️⃣ Accessing the Application
 
 -   💻 **Frontend (UI):** http://localhost:3001\
--   ⚙️ **Backend API:** http://localhost:3000\
--   🗄️ **Database (PostgreSQL):** localhost:5432
+-   ⚙️ **Backend API:** http://localhost:3000
 
-------------------------------------------------------------------------
-
-## 5️⃣ Stopping the Application
-
-If running attached to the terminal, press `CTRL + C`.
-
-If running in detached mode:
-
-``` bash
-docker compose down
-```
-
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 ## 🧠 Technical Notes
 
