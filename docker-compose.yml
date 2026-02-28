@@ -22,7 +22,7 @@ services:
       DB_USER: ${DB_USER:-postgres}
       DB_PASSWORD: ${DB_PASSWORD:-postgres}
       DB_NAME: ${DB_NAME:-sal}
-      SECRET: ${SECRET:-pdjaspdipsjp}
+      SECRET: ${SECRET:}
     volumes:
       - ./backend:/app
       - /app/node_modules

@@ -188,7 +188,6 @@ docker compose down -v
 ```
 
 
-
 ## 📄 License
 
 Released under the [MIT license](./LICENSE).
