@@ -1,6 +1,6 @@
-[submodule "backend"]
-	path = backend
+[submodule "api"]
+	path = api
 	url = git@github.com:Framework-for-Search-as-Learning/searchat-behavior-api.git
-[submodule "frontend"]
-	path = frontend
+[submodule "ui"]
+	path = ui
 	url = git@github.com:Framework-for-Search-as-Learning/searchat-behavior-ui.git
