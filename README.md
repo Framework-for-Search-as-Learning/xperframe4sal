@@ -11,13 +11,13 @@ A standardized framework for capturing authentic human behavior in search and AI
 </p>
 
 ## Desciption
+
 Searchat Behavior is an end-to-end experimental framework for creating, managing, and running controlled experiments focused on user behavior during interactions with search engines and chat-based systems. The framework is designed to support empirical studies on how users search for information or  interact with conversational agents. It provides researchers with a complete toolchain to design experiments, deploy them as web-based studies, collect fine-grained interaction logs, visualize users data, and export standardized data for analysis and replication.
 
 Searchat Behavior is domain-agnostic and can be used in any context where understanding how users explore, search, or interact with conversational tools is essential.
 
-
-
 ## 🚀 Key Features
+
 - End-to-end experimentation support: from experiment design to data collection
 - Web-based platform accessible to researchers and participants
 - Support for search-based and chat-based interaction tasks
@@ -26,31 +26,32 @@ Searchat Behavior is domain-agnostic and can be used in any context where unders
 - Separation of researcher and participant interfaces
 - Designed for empirical, reproducible, and extensible research
 
-
-
 ## 🧠 Typical Use Cases
+
 Searchat Behavior can be used to support experiments such as:
+
 - Studying exploratory search behavior in open-ended information tasks
 - Analyzing user interactions with chatbots or conversational agents
 - Comparing search-based and chat-based information access strategies
 - Investigating decision-making, engagement, and interaction patterns
 
-
 ## 🏗️ System Architecture (High-Level)
 
 Searchat Behavior follows a web-based client–server architecture composed of:
+
 - Frontend (Web Application): Provides user interfaces for both researchers and participants.
 - Backend (API Server): Handles experiment management, business logic, authentication, and data persistence.
 - Data Layer: Stores experiment configurations, participant information, and detailed interaction logs.
 
 The system supports two main user roles:
+
 - Researchers: design, configure, deploy, and monitor experiments
 - Participants: take part in experiments by interacting with search engines or chat tools
 
 > **⚠️ Running Services Independently**
 > The instructions below in the **Getting Started** guide are for running the **entire stack together** using `Docker Compose`. If you wish to run the Frontend or Backend individually (e.g., for local development or native execution without Docker), please navigate to their respective submodule directories and follow the specific instructions in their individual `README.md` files:
-> - **Backend API:** `searchat-behavior-backend/README.md`
-> - **Frontend UI:** `searchat-behavior-front/README.md`
+> - **Backend API:** `searchat-behavior-api/README.md`
+> - **Frontend UI:** `searchat-behavior-ui/README.md`
 ---
 
 ## 🛠️ Getting Started
