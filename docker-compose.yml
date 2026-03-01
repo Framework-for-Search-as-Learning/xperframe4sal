@@ -7,12 +7,12 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
       POSTGRES_DB: ${DB_NAME:-sal}
     ports:
-      - '5432:5432'
+      - '5432:${DB_PORT:-5432}'
     volumes:
       - postgres_data:/var/lib/postgresql/data
   api:
     build:
-      context: ./backend
+      context: ./api
       dockerfile: Dockerfile.dev
     container_name: nestjs-dev
     ports:
@@ -22,9 +22,10 @@ services:
       DB_USER: ${DB_USER:-postgres}
       DB_PASSWORD: ${DB_PASSWORD:-postgres}
       DB_NAME: ${DB_NAME:-sal}
-      SECRET: ${SECRET:}
+      SECRET: ${SECRET}
+      DB_PORT: ${DB_PORT:-5432}
     volumes:
-      - ./backend:/app
+      - ./api:/app
       - /app/node_modules
     
     depends_on:
@@ -32,14 +33,14 @@ services:
   
   front:
     build:
-      context: ./frontend
+      context: ./ui
       dockerfile: Dockerfile.dev
     stdin_open: true
     tty: true
     ports:
       - "3001:3001"
     volumes:
-      - ./frontend:/app
+      - ./ui:/app
       - /app/node_modules
     environment:
       - HOST=0.0.0.0

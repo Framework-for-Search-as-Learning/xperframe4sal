@@ -49,8 +49,8 @@ The system supports two main user roles:
 
 > **⚠️ Running Services Independently**
 > The instructions below in the **Getting Started** guide are for running the **entire stack together** using `Docker Compose`. If you wish to run the Frontend or Backend individually (e.g., for local development or native execution without Docker), please navigate to their respective submodule directories and follow the specific instructions in their individual `README.md` files:
-> - **Backend API:** `xperframe4sal-backend/README.md`
-> - **Frontend UI:** `xperframe4sal-front/README.md`
+> - **Backend API:** `searchat-behavior-backend/README.md`
+> - **Frontend UI:** `searchat-behavior-front/README.md`
 ---
 
 ## 🛠️ Getting Started
@@ -72,8 +72,8 @@ This repository uses **Git submodules**, so you must clone it
 recursively:
 
 ``` bash
-git clone --recurse-submodules https://github.com/Framework-for-Search-as-Learning/xperframe4sal.git
-cd xperframe4sal
+git clone --recurse-submodules https://github.com/Framework-for-Search-as-Learning/searchat-behavior.git
+cd searchat-behavior
 ```
 
 If you already cloned the repository without submodules, initialize them
